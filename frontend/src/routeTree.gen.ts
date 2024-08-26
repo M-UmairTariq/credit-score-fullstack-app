@@ -20,8 +20,16 @@ import { Route as LayoutIndexImport } from './routes/_layout/index'
 import { Route as LayoutSettingsImport } from './routes/_layout/settings'
 import { Route as LayoutItemsImport } from './routes/_layout/items'
 import { Route as LayoutAdminImport } from './routes/_layout/admin'
+import { Route as CreditScorePredictionImport } from './routes/credit-score-prediction';
+
 
 // Create/Update Routes
+
+const CreditScorePredictionRoute = CreditScorePredictionImport.update({
+  path: '/predict',
+  getParentRoute: () => rootRoute,
+} as any);
+
 
 const SignupRoute = SignupImport.update({
   path: '/signup',
@@ -73,41 +81,45 @@ const LayoutAdminRoute = LayoutAdminImport.update({
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/_layout': {
-      preLoaderRoute: typeof LayoutImport
-      parentRoute: typeof rootRoute
-    }
+      preLoaderRoute: typeof LayoutImport;
+      parentRoute: typeof rootRoute;
+    };
     '/login': {
-      preLoaderRoute: typeof LoginImport
-      parentRoute: typeof rootRoute
-    }
+      preLoaderRoute: typeof LoginImport;
+      parentRoute: typeof rootRoute;
+    };
     '/recover-password': {
-      preLoaderRoute: typeof RecoverPasswordImport
-      parentRoute: typeof rootRoute
-    }
+      preLoaderRoute: typeof RecoverPasswordImport;
+      parentRoute: typeof rootRoute;
+    };
     '/reset-password': {
-      preLoaderRoute: typeof ResetPasswordImport
-      parentRoute: typeof rootRoute
-    }
+      preLoaderRoute: typeof ResetPasswordImport;
+      parentRoute: typeof rootRoute;
+    };
     '/signup': {
-      preLoaderRoute: typeof SignupImport
-      parentRoute: typeof rootRoute
-    }
+      preLoaderRoute: typeof SignupImport;
+      parentRoute: typeof rootRoute;
+    };
     '/_layout/admin': {
-      preLoaderRoute: typeof LayoutAdminImport
-      parentRoute: typeof LayoutImport
-    }
+      preLoaderRoute: typeof LayoutAdminImport;
+      parentRoute: typeof LayoutImport;
+    };
     '/_layout/items': {
-      preLoaderRoute: typeof LayoutItemsImport
-      parentRoute: typeof LayoutImport
-    }
+      preLoaderRoute: typeof LayoutItemsImport;
+      parentRoute: typeof LayoutImport;
+    };
     '/_layout/settings': {
-      preLoaderRoute: typeof LayoutSettingsImport
-      parentRoute: typeof LayoutImport
-    }
+      preLoaderRoute: typeof LayoutSettingsImport;
+      parentRoute: typeof LayoutImport;
+    };
     '/_layout/': {
-      preLoaderRoute: typeof LayoutIndexImport
-      parentRoute: typeof LayoutImport
-    }
+      preLoaderRoute: typeof LayoutIndexImport;
+      parentRoute: typeof LayoutImport;
+    };
+    '/predict': {
+      preLoaderRoute: typeof CreditScorePredictionImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
@@ -124,6 +136,7 @@ export const routeTree = rootRoute.addChildren([
   RecoverPasswordRoute,
   ResetPasswordRoute,
   SignupRoute,
+  CreditScorePredictionRoute,
 ])
 
 /* prettier-ignore-end */

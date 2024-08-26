@@ -42,11 +42,14 @@ function getItemsQueryOptions({ page }: { page: number }) {
 }
 
 function ItemsTable() {
+  interface SearchParams {
+    page: number;
+  }
   const queryClient = useQueryClient()
   const { page } = Route.useSearch()
   const navigate = useNavigate({ from: Route.fullPath })
   const setPage = (page: number) =>
-    navigate({ search: (prev) => ({ ...prev, page }) })
+    navigate({ search: (prev: SearchParams) => ({ ...prev, page }) })
 
   const {
     data: items,
