@@ -7,21 +7,21 @@ from sqlmodel import Field, Relationship, SQLModel
 #for predict data input structure
 class PredictInputData(BaseModel):
     age: int
-    job: Literal['unemployed', 'services', 'admin.', 'blue-collar', 'entrepreneur', 'housemaid', 'management', 'retired', 'self-employed', 'student', 'technician', 'unknown']
-    marital: Literal['married', 'single', 'divorced', 'unknown']
-    education: Literal['primary', 'secondary', 'tertiary', 'unknown']
-    default: Literal['yes', 'no', 'unknown']
-    balance: int
-    housing: Literal['yes', 'no', 'unknown']
-    loan: Literal['yes', 'no', 'unknown']
-    contact: Literal['cellular', 'telephone', 'unknown']
+    job: str
+    marital: str
+    education: str
+    default: str
+    balance: float
+    housing: str
+    loan: str
+    contact: str
     day: int
-    month: Literal['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+    month: str
     duration: int
     campaign: int
-    pdays: int = Field(..., ge=-1)
+    pdays: int
     previous: int
-    poutcome: Literal['unknown', 'failure', 'other', 'success']
+    poutcome: str
 
 
 # Shared properties
